@@ -12,4 +12,12 @@ def resnet_classifier(image_path):
     x = np.expand_dims(x, axis=0)
     x = preprocess_input(x)
     preds = rn50.predict(x)
-    return [x[1] for x in decode_predictions(preds, top=2)[0]]
+    return set([x[1] for x in decode_predictions(preds, top=2)[0]])
+
+
+def resnet_filter(image_path, allowed_classes=set('gown', 'mosquito_net', 'hoopskirt', 'groom')):
+    predictions = resnet_classifier(image_path)
+    if len(allowed_classes.union(predictions)) > 0:
+        return True
+    else:
+        return False
