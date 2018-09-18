@@ -23,7 +23,7 @@ def get_ids(opts):
                 labels.append(current_labels)
 
     youtube_dataset_video_ids = []
-    reg = re.compile('i\("(?P<dataset_id>\S*)","(?P<youtube_id>\S*)"\);')
+    reg = re.compile(r'i\("(?P<dataset_id>\S*)","(?P<youtube_id>\S*)"\);')
 
     for vid_id in vid_ids:
         rqst = requests.get("http://data.yt8m.org/2/j/i/{}/{}.js".format(vid_id[:2], vid_id))
