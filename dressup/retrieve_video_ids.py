@@ -45,4 +45,5 @@ if __name__ == "__main__":
                         default="yt_ids.pkl")
     parser.add_argument("--tfrecordspath", help="(glob-able) path where all our tfrecord files are stored", 
                         default="~/data/yt8m/**/*.tfrecord")
+    opts = parser.parse_args()
     get_ids(opts)
